@@ -1,9 +1,8 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Trophy, TrendingUp, BadgeCheck, Shield } from 'lucide-react'
 import Container from '../ui/Container'
 import StatCard from '../ui/StatCard'
-import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -13,6 +12,7 @@ const fadeUp = {
 export default function Transformation() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [position, setPosition] = useState(50)
 
   return (
     <Container paddingY="large">
@@ -36,12 +36,44 @@ export default function Transformation() {
       </div>
 
       <div className="mt-12 rounded-xl border bg-white p-4 shadow-md">
-        <ReactCompareSlider
-          itemOne={<ReactCompareSliderImage src="/images/mock-before.png" alt="Before search results" />}
-          itemTwo={<ReactCompareSliderImage src="/images/mock-after.png" alt="After search results" />}
-          position={50}
-          style={{ width: '100%', height: 420 }}
-        />
+        {/* Lightweight before/after slider without external deps */}
+        <div className="relative w-full overflow-hidden rounded-lg" style={{ height: 420 }}>
+          <img
+            src="/images/mock-after.png"
+            alt="After search results"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+          />
+          <div
+            className="absolute inset-y-0 left-0 overflow-hidden"
+            style={{ width: `${position}%` }}
+            aria-hidden
+          >
+            <img
+              src="/images/mock-before.png"
+              alt="Before search results"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          {/* Handle */}
+          <div
+            className="pointer-events-none absolute inset-y-0"
+            style={{ left: `calc(${position}% - 1px)` }}
+            aria-hidden
+          >
+            <div className="h-full w-0.5 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={position}
+            onChange={(e) => setPosition(Number(e.target.value))}
+            aria-label="Compare before and after"
+            className="absolute bottom-3 left-1/2 z-10 -translate-x-1/2 cursor-pointer"
+          />
+        </div>
 
         <div className="pointer-events-none -mt-10 flex justify-center gap-3">
           <StatCard icon={Trophy} number="94%" label="Achieve Page One" />
