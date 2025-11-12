@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useMemo } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Trophy, TrendingUp, BadgeCheck, Shield } from 'lucide-react'
 import Container from '../ui/Container'
@@ -19,6 +19,14 @@ export default function Transformation() {
   const handleError = (e) => {
     e.currentTarget.src = '/images/placeholder.svg'
   }
+
+  // Compute dynamic scales so the currently revealed side subtly scales up while the other scales down
+  const { beforeScale, afterScale } = useMemo(() => {
+    const pct = Math.min(100, Math.max(0, position)) / 100
+    const before = 0.9 + 0.15 * pct // 0.9 -> 1.05 as the before side grows
+    const after = 0.9 + 0.15 * (1 - pct) // 1.05 -> 0.9 as the before side grows
+    return { beforeScale: before, afterScale: after }
+  }, [position])
 
   return (
     <Container paddingY="large">
@@ -41,6 +49,7 @@ export default function Transformation() {
         </motion.p>
       </div>
 
+      {/* Interactive before/after with native scaling feedback */}
       <div className="mt-12 rounded-xl border bg-white p-4 shadow-card">
         {/* Slider header labels for clarity */}
         <div className="mb-3 flex items-center justify-between px-1 text-sm font-semibold uppercase tracking-wide text-gray-700">
@@ -49,15 +58,23 @@ export default function Transformation() {
         </div>
 
         {/* Accessible before/after slider */}
-        <div className="relative w-full overflow-hidden rounded-lg" style={{ height: 440 }}>
+        <div className="relative w-full overflow-hidden rounded-lg bg-gray-50" style={{ height: 480 }}>
           {/* AFTER on the right (base layer) */}
-          <img
-            src="/images/article-positive.svg"
-            alt="After: optimized search results with positive coverage"
-            className="absolute inset-0 h-full w-full object-cover"
-            loading="lazy"
-            onError={handleError}
-          />
+          <div
+            className="absolute inset-0"
+            style={{ transform: `scale(${afterScale})`, transition: 'transform 300ms ease', willChange: 'transform' }}
+            aria-hidden
+          >
+            <img
+              src="/images/article-positive.svg"
+              alt="After: optimized search results with positive coverage"
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+              onError={handleError}
+            />
+            {/* subtle inner shadow for depth */}
+            <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-black/5" />
+          </div>
 
           {/* BEFORE revealed on the left */}
           <div
@@ -65,13 +82,19 @@ export default function Transformation() {
             style={{ width: `${position}%` }}
             aria-hidden
           >
-            <img
-              src="/images/article-negative.svg"
-              alt="Before: search results with negatives and missing authority signals"
-              className="h-full w-full object-cover"
-              loading="lazy"
-              onError={handleError}
-            />
+            <div
+              className="absolute inset-0"
+              style={{ transform: `scale(${beforeScale})`, transition: 'transform 300ms ease', willChange: 'transform' }}
+            >
+              <img
+                src="/images/article-negative.svg"
+                alt="Before: search results with negatives and missing authority signals"
+                className="h-full w-full object-cover"
+                loading="lazy"
+                onError={handleError}
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-black/5" />
+            </div>
           </div>
 
           {/* Corner badges */}
@@ -102,7 +125,8 @@ export default function Transformation() {
           />
         </div>
 
-        <div className="pointer-events-none -mt-10 flex justify-center gap-3">
+        {/* Separate the KPI strip lower to avoid crowding the slider */}
+        <div className="mt-8 flex justify-center gap-3">
           <StatCard icon={Trophy} number="94%" label="Achieve Page One" />
           <StatCard icon={TrendingUp} number="3.4X" label="Revenue Increase" />
           <StatCard icon={BadgeCheck} number="100%" label="Knowledge Panel Success" />
@@ -110,10 +134,16 @@ export default function Transformation() {
         </div>
       </div>
 
-      {/* Knowledge panel mock placed with a real image */}
-      <div className="mx-auto mt-12 max-w-3xl text-center">
+      {/* Knowledge panel mock placed with a real image, spaced further down for clarity */}
+      <div className="mx-auto mt-16 max-w-3xl text-center">
         <div className="relative overflow-hidden rounded-xl border bg-white shadow-card">
-          <img src="/images/knowledge-panel.svg" alt="Google Knowledge Panel mockup" className="h-64 w-full object-cover" loading="lazy" onError={handleError} />
+          <img
+            src="/images/knowledge-panel.svg"
+            alt="Google Knowledge Panel mockup"
+            className="h-72 w-full object-cover"
+            loading="lazy"
+            onError={handleError}
+          />
         </div>
         <figure className="mt-6">
           <blockquote className="text-lg italic text-gray-800">
