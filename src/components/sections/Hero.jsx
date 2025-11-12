@@ -54,6 +54,10 @@ export default function Hero() {
   const { rotateX, rotateY, translateX, translateY } = useParallax(containerRef)
   const prefersReducedMotion = useReducedMotion()
 
+  const handleError = (e) => {
+    e.currentTarget.src = '/images/placeholder.svg'
+  }
+
   return (
     <header className="relative min-h-screen overflow-hidden bg-gradient-to-b from-gray-100 to-white">
       {/* Ambient glows */}
@@ -172,7 +176,7 @@ export default function Hero() {
               animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <img src="/images/google-panel.png" alt="Knowledge panel" className="h-28 w-full object-cover" />
+              <img src="/images/google-panel.png" alt="Knowledge panel" className="h-28 w-full object-cover" onError={handleError} />
               <div className="p-3 text-xs font-medium text-gray-700">Knowledge Panel</div>
             </motion.div>
 
@@ -181,7 +185,7 @@ export default function Hero() {
               animate={prefersReducedMotion ? {} : { y: [0, 10, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
             >
-              <img src="/images/mock-after.png" alt="Positive press" className="h-24 w-full object-cover" />
+              <img src="/images/mock-after.png" alt="Positive press" className="h-24 w-full object-cover" onError={handleError} />
               <div className="p-3 text-xs font-medium text-gray-700">Press Feature</div>
             </motion.div>
 
@@ -190,7 +194,7 @@ export default function Hero() {
               animate={prefersReducedMotion ? {} : { y: [0, -6, 0] }}
               transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
             >
-              <img src="/images/mock-before.png" alt="Suppressed result" className="h-20 w-full object-cover opacity-80" />
+              <img src="/images/mock-before.png" alt="Suppressed result" className="h-20 w-full object-cover opacity-80" onError={handleError} />
               <div className="p-2 text-[10px] font-medium text-gray-700">Suppressed</div>
             </motion.div>
 

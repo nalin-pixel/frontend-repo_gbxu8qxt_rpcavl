@@ -16,6 +16,10 @@ export default function Transformation() {
 
   const onInput = (e) => setPosition(Number(e.target.value))
 
+  const handleError = (e) => {
+    e.currentTarget.src = '/images/placeholder.svg'
+  }
+
   return (
     <Container paddingY="large">
       <div ref={ref} className="mx-auto max-w-3xl text-center">
@@ -46,6 +50,7 @@ export default function Transformation() {
             alt="After: optimized search results with positive coverage"
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
+            onError={handleError}
           />
 
           {/* BEFORE revealed on the left */}
@@ -59,6 +64,7 @@ export default function Transformation() {
               alt="Before: search results with negatives and missing authority signals"
               className="h-full w-full object-cover"
               loading="lazy"
+              onError={handleError}
             />
           </div>
 
@@ -101,7 +107,7 @@ export default function Transformation() {
       {/* Video testimonial placeholder */}
       <div className="mx-auto mt-12 max-w-3xl text-center">
         <div className="relative overflow-hidden rounded-xl border bg-white shadow-card">
-          <img src="/images/testimonial.jpg" alt="Marcus T., Tech CEO" className="h-64 w-full object-cover" loading="lazy" />
+          <img src="/images/testimonial.jpg" alt="Marcus T., Tech CEO" className="h-64 w-full object-cover" loading="lazy" onError={handleError} />
           <button aria-label="Play video" className="absolute inset-0 m-auto h-16 w-16 rounded-full bg-white/90 text-gray-900 shadow-xl transition-transform duration-300 ease-out hover:scale-105">▶</button>
         </div>
         <figure className="mt-6">

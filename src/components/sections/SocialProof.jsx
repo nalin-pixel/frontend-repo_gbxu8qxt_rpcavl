@@ -12,6 +12,9 @@ const logos = [
 export default function SocialProof() {
   // Duplicate for seamless loop
   const items = [...logos, ...logos]
+  const handleError = (e) => {
+    e.currentTarget.src = '/images/placeholder.svg'
+  }
   return (
     <Container paddingY="small" className="bg-white">
       <div className="mx-auto max-w-[1280px] px-6 md:px-8">
@@ -29,7 +32,7 @@ export default function SocialProof() {
             >
               {items.map((logo, i) => (
                 <li key={`${logo.alt}-${i}`} className="shrink-0 opacity-80 transition-opacity hover:opacity-100">
-                  <img src={logo.src} alt={logo.alt} className="h-8 w-auto md:h-9" loading="lazy" />
+                  <img src={logo.src} alt={logo.alt} className="h-8 w-auto md:h-9" loading="lazy" decoding="async" onError={handleError} />
                 </li>
               ))}
             </ul>
