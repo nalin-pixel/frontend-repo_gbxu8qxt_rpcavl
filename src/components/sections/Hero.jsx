@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { motion, useMotionValue, useTransform, useReducedMotion } from 'framer-motion'
 import { Phone, Menu, ArrowRight, Bot, Users, TrendingUp, Newspaper, BadgeCheck, Star, Sparkles } from 'lucide-react'
 import Button from '../ui/Button'
@@ -43,8 +43,8 @@ function useParallax(ref) {
 
   const rotateX = useTransform(y, [-0.5, 0.5], [8, -8])
   const rotateY = useTransform(x, [-0.5, 0.5], [-8, 8])
-  const translateX = useTransform(x, [-0.5, 0.5], [-6, 6])
-  const translateY = useTransform(y, [-0.5, 0.5], [-6, 6])
+  const translateX = useTransform(x, [-0.5, 0.5], [-10, 10])
+  const translateY = useTransform(y, [-0.5, 0.5], [-10, 10])
 
   return { rotateX, rotateY, translateX, translateY }
 }
@@ -139,63 +139,57 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: Animated, interactive visual */}
+        {/* Right: Enlarged animated, interactive visual resembling a full webpage */}
         <div className="relative hidden md:block">
           {/* Glow ring */}
-          <div className="pointer-events-none absolute -inset-6 rounded-[28px] bg-gradient-to-b from-brand-orange/20 to-transparent blur-2xl" aria-hidden />
+          <div className="pointer-events-none absolute -inset-8 rounded-[28px] bg-gradient-to-b from-brand-orange/20 to-transparent blur-2xl" aria-hidden />
 
           <motion.div
             ref={containerRef}
-            style={!prefersReducedMotion ? { perspective: 1000 } : undefined}
-            className="relative rounded-2xl border bg-white/80 p-6 shadow-2xl backdrop-blur"
+            style={!prefersReducedMotion ? { perspective: 1200 } : undefined}
+            className="relative h-[520px] rounded-2xl border bg-white/80 p-3 md:p-5 lg:h-[640px] shadow-2xl backdrop-blur"
             aria-label="Interactive search results showcase"
           >
-            {/* Base search UI card */}
+            {/* Base: full webpage mock image */}
             <motion.div
               style={!prefersReducedMotion ? { rotateX, rotateY } : undefined}
-              className="relative overflow-hidden rounded-xl border bg-white shadow-md"
+              className="relative h-full w-full overflow-hidden rounded-xl border bg-white shadow-md"
             >
-              <div className="h-8 w-full bg-gray-100" />
-              <div className="grid gap-3 p-4">
-                <div className="h-4 w-3/4 rounded bg-red-100" />
-                <div className="h-4 w-2/3 rounded bg-red-100" />
-                <div className="h-4 w-1/2 rounded bg-red-100" />
-              </div>
-              <div className="h-px w-full bg-gray-200" />
-              <div className="grid gap-3 p-4">
-                <div className="h-4 w-3/4 rounded bg-green-100" />
-                <div className="h-4 w-2/3 rounded bg-green-100" />
-                <div className="h-4 w-1/2 rounded bg-green-100" />
-              </div>
+              <img
+                src="/images/webpage-mock.svg"
+                alt="Interactive mock of a full webpage layout"
+                className="h-full w-full object-cover"
+                onError={handleError}
+              />
             </motion.div>
 
-            {/* Floating cards */}
+            {/* Larger floating cards */}
             <motion.div
-              className="absolute -right-6 -top-8 w-40 overflow-hidden rounded-lg border bg-white shadow-xl"
+              className="absolute -right-6 -top-8 w-56 overflow-hidden rounded-xl border bg-white shadow-xl"
               style={!prefersReducedMotion ? { x: translateX, y: translateY } : undefined}
-              animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
+              animate={prefersReducedMotion ? {} : { y: [0, -12, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <img src="/images/google-panel.png" alt="Knowledge panel" className="h-28 w-full object-cover" onError={handleError} />
-              <div className="p-3 text-xs font-medium text-gray-700">Knowledge Panel</div>
+              <img src="/images/google-panel.png" alt="Knowledge panel" className="h-40 w-full object-cover" onError={handleError} />
+              <div className="p-3 text-sm font-semibold text-gray-800">Knowledge Panel</div>
             </motion.div>
 
             <motion.div
-              className="absolute -left-6 bottom-6 w-44 overflow-hidden rounded-lg border bg-white shadow-xl"
-              animate={prefersReducedMotion ? {} : { y: [0, 10, 0] }}
+              className="absolute -left-6 bottom-10 w-60 overflow-hidden rounded-xl border bg-white shadow-xl"
+              animate={prefersReducedMotion ? {} : { y: [0, 14, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
             >
-              <img src="/images/mock-after.png" alt="Positive press" className="h-24 w-full object-cover" onError={handleError} />
-              <div className="p-3 text-xs font-medium text-gray-700">Press Feature</div>
+              <img src="/images/mock-after.png" alt="Positive press" className="h-40 w-full object-cover" onError={handleError} />
+              <div className="p-3 text-sm font-semibold text-gray-800">Press Feature</div>
             </motion.div>
 
             <motion.div
-              className="absolute right-10 bottom-[-18px] w-36 overflow-hidden rounded-lg border bg-white shadow-xl"
-              animate={prefersReducedMotion ? {} : { y: [0, -6, 0] }}
+              className="absolute right-12 bottom-[-22px] w-48 overflow-hidden rounded-xl border bg-white shadow-xl"
+              animate={prefersReducedMotion ? {} : { y: [0, -10, 0] }}
               transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
             >
-              <img src="/images/mock-before.png" alt="Suppressed result" className="h-20 w-full object-cover opacity-80" onError={handleError} />
-              <div className="p-2 text-[10px] font-medium text-gray-700">Suppressed</div>
+              <img src="/images/mock-before.png" alt="Suppressed result" className="h-32 w-full object-cover opacity-90" onError={handleError} />
+              <div className="p-2 text-xs font-medium text-gray-700">Suppressed</div>
             </motion.div>
 
             {/* Sparkles accent */}
@@ -205,7 +199,7 @@ export default function Hero() {
               transition={{ duration: 2, repeat: Infinity }}
               aria-hidden
             >
-              <Sparkles className="h-6 w-6" />
+              <Sparkles className="h-8 w-8" />
             </motion.div>
           </motion.div>
         </div>

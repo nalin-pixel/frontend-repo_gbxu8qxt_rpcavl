@@ -42,8 +42,14 @@ export default function Transformation() {
       </div>
 
       <div className="mt-12 rounded-xl border bg-white p-4 shadow-card">
+        {/* Slider header labels for clarity */}
+        <div className="mb-3 flex items-center justify-between px-1 text-sm font-semibold uppercase tracking-wide text-gray-700">
+          <span>Before</span>
+          <span>After</span>
+        </div>
+
         {/* Accessible before/after slider */}
-        <div className="relative w-full overflow-hidden rounded-lg" style={{ height: 420 }}>
+        <div className="relative w-full overflow-hidden rounded-lg" style={{ height: 440 }}>
           {/* AFTER on the right (base layer) */}
           <img
             src="/images/mock-after.png"
@@ -68,8 +74,8 @@ export default function Transformation() {
             />
           </div>
 
-          {/* Labels */}
-          <div className="pointer-events-none absolute left-3 top-3 select-none rounded-md bg-black/60 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white">Before</div>
+          {/* Corner badges */}
+          <div className="pointer-events-none absolute left-3 top-3 select-none rounded-md bg-black/70 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white">Before</div>
           <div className="pointer-events-none absolute right-3 top-3 select-none rounded-md bg-emerald-600/90 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white">After</div>
 
           {/* Handle */}
@@ -81,7 +87,7 @@ export default function Transformation() {
             <div className="h-full w-0.5 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
           </div>
 
-          {/* Range control */}
+          {/* Range control - centered with titles on both sides above */}
           <input
             type="range"
             min="0"
@@ -92,7 +98,7 @@ export default function Transformation() {
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={position}
-            className="absolute bottom-3 left-1/2 z-10 h-2 w-2/3 -translate-x-1/2 cursor-pointer appearance-none rounded-full bg-white/70 backdrop-blur transition-colors hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-orange/60"
+            className="absolute bottom-3 left-1/2 z-10 h-2 w-2/3 -translate-x-1/2 cursor-pointer appearance-none rounded-full bg-white/80 backdrop-blur transition-colors hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-orange/60"
           />
         </div>
 
@@ -104,11 +110,10 @@ export default function Transformation() {
         </div>
       </div>
 
-      {/* Video testimonial placeholder */}
+      {/* Knowledge panel mock placed with a real image */}
       <div className="mx-auto mt-12 max-w-3xl text-center">
         <div className="relative overflow-hidden rounded-xl border bg-white shadow-card">
-          <img src="/images/testimonial.jpg" alt="Marcus T., Tech CEO" className="h-64 w-full object-cover" loading="lazy" onError={handleError} />
-          <button aria-label="Play video" className="absolute inset-0 m-auto h-16 w-16 rounded-full bg-white/90 text-gray-900 shadow-xl transition-transform duration-300 ease-out hover:scale-105">▶</button>
+          <img src="/images/google-panel.png" alt="Google Knowledge Panel mockup" className="h-64 w-full object-cover" loading="lazy" onError={handleError} />
         </div>
         <figure className="mt-6">
           <blockquote className="text-lg italic text-gray-800">
