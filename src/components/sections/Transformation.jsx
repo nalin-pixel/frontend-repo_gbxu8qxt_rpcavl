@@ -103,8 +103,7 @@ export default function Transformation() {
             <div className="relative h-full w-[3px]">
               <div className="absolute inset-0 bg-white" />
               <div className="absolute inset-0 -mx-2 bg-gradient-to-b from-white/0 via-white/70 to-white/0 blur-sm" />
-              <div className="absolute inset-0 -mx-4 bg-brand-orange/10 blur
-              "/>
+              <div className="absolute inset-0 -mx-4 bg-brand-orange/10 blur-md" />
             </div>
             {/* knob */}
             <div className="absolute left-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white bg-brand-orange shadow-[0_10px_30px_rgba(255,107,53,0.5)] ring-2 ring-white" />
