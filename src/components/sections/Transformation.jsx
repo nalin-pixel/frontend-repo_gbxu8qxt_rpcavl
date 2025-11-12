@@ -14,6 +14,8 @@ export default function Transformation() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [position, setPosition] = useState(50)
 
+  const onInput = (e) => setPosition(Number(e.target.value))
+
   return (
     <Container paddingY="large">
       <div ref={ref} className="mx-auto max-w-3xl text-center">
@@ -21,7 +23,7 @@ export default function Transformation() {
           initial="hidden"
           animate={isInView ? 'show' : 'hidden'}
           variants={fadeUp}
-          className="text-4xl font-bold text-gray-900 md:text-5xl"
+          className="md:text-5xl text-4xl font-bold text-gray-900"
         >
           From Googled and Ghosted to Googled and Closed
         </motion.h2>
@@ -29,21 +31,24 @@ export default function Transformation() {
           initial="hidden"
           animate={isInView ? 'show' : 'hidden'}
           variants={fadeUp}
-          className="mt-3 text-gray-600"
+          className="prose-lead mt-3"
         >
           See what happens when you take control of your online narrative
         </motion.p>
       </div>
 
-      <div className="mt-12 rounded-xl border bg-white p-4 shadow-md">
-        {/* Lightweight before/after slider without external deps */}
+      <div className="mt-12 rounded-xl border bg-white p-4 shadow-card">
+        {/* Accessible before/after slider */}
         <div className="relative w-full overflow-hidden rounded-lg" style={{ height: 420 }}>
+          {/* AFTER on the right (base layer) */}
           <img
             src="/images/mock-after.png"
-            alt="After search results"
+            alt="After: optimized search results with positive coverage"
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
           />
+
+          {/* BEFORE revealed on the left */}
           <div
             className="absolute inset-y-0 left-0 overflow-hidden"
             style={{ width: `${position}%` }}
@@ -51,11 +56,16 @@ export default function Transformation() {
           >
             <img
               src="/images/mock-before.png"
-              alt="Before search results"
+              alt="Before: search results with negatives and missing authority signals"
               className="h-full w-full object-cover"
               loading="lazy"
             />
           </div>
+
+          {/* Labels */}
+          <div className="pointer-events-none absolute left-3 top-3 select-none rounded-md bg-black/60 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white">Before</div>
+          <div className="pointer-events-none absolute right-3 top-3 select-none rounded-md bg-emerald-600/90 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white">After</div>
+
           {/* Handle */}
           <div
             className="pointer-events-none absolute inset-y-0"
@@ -64,14 +74,19 @@ export default function Transformation() {
           >
             <div className="h-full w-0.5 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
           </div>
+
+          {/* Range control */}
           <input
             type="range"
             min="0"
             max="100"
             value={position}
-            onChange={(e) => setPosition(Number(e.target.value))}
-            aria-label="Compare before and after"
-            className="absolute bottom-3 left-1/2 z-10 -translate-x-1/2 cursor-pointer"
+            onChange={onInput}
+            aria-label="Compare before and after search results"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={position}
+            className="absolute bottom-3 left-1/2 z-10 h-2 w-2/3 -translate-x-1/2 cursor-pointer appearance-none rounded-full bg-white/70 backdrop-blur transition-colors hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-orange/60"
           />
         </div>
 
@@ -85,9 +100,9 @@ export default function Transformation() {
 
       {/* Video testimonial placeholder */}
       <div className="mx-auto mt-12 max-w-3xl text-center">
-        <div className="relative overflow-hidden rounded-xl border bg-white shadow">
+        <div className="relative overflow-hidden rounded-xl border bg-white shadow-card">
           <img src="/images/testimonial.jpg" alt="Marcus T., Tech CEO" className="h-64 w-full object-cover" loading="lazy" />
-          <button aria-label="Play video" className="absolute inset-0 m-auto h-16 w-16 rounded-full bg-white/90 text-gray-900 shadow-xl transition hover:scale-105">▶</button>
+          <button aria-label="Play video" className="absolute inset-0 m-auto h-16 w-16 rounded-full bg-white/90 text-gray-900 shadow-xl transition-transform duration-300 ease-out hover:scale-105">▶</button>
         </div>
         <figure className="mt-6">
           <blockquote className="text-lg italic text-gray-800">
