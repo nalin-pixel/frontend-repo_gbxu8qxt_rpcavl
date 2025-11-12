@@ -97,20 +97,20 @@ export default function Transformation() {
             </div>
           </div>
 
-          {/* Corner badges */}
-          <div className="pointer-events-none absolute left-3 top-3 select-none rounded-md bg-black/70 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white">Before</div>
-          <div className="pointer-events-none absolute right-3 top-3 select-none rounded-md bg-emerald-600/90 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white">After</div>
-
-          {/* Handle */}
-          <div
-            className="pointer-events-none absolute inset-y-0"
-            style={{ left: `calc(${position}% - 1px)` }}
-            aria-hidden
-          >
-            <div className="h-full w-0.5 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
+          {/* Enhanced, visible handle with glow and knob */}
+          <div className="pointer-events-none absolute inset-y-0 z-10" style={{ left: `calc(${position}% - 1.5px)` }} aria-hidden>
+            {/* vertical divider with glow */}
+            <div className="relative h-full w-[3px]">
+              <div className="absolute inset-0 bg-white" />
+              <div className="absolute inset-0 -mx-2 bg-gradient-to-b from-white/0 via-white/70 to-white/0 blur-sm" />
+              <div className="absolute inset-0 -mx-4 bg-brand-orange/10 blur
+              "/>
+            </div>
+            {/* knob */}
+            <div className="absolute left-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white bg-brand-orange shadow-[0_10px_30px_rgba(255,107,53,0.5)] ring-2 ring-white" />
           </div>
 
-          {/* Range control - centered with titles on both sides above */}
+          {/* Range control - centered */}
           <input
             type="range"
             min="0"
@@ -121,7 +121,7 @@ export default function Transformation() {
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={position}
-            className="absolute bottom-3 left-1/2 z-10 h-2 w-2/3 -translate-x-1/2 cursor-pointer appearance-none rounded-full bg-white/80 backdrop-blur transition-colors hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-orange/60"
+            className="absolute bottom-3 left-1/2 z-20 h-2 w-2/3 -translate-x-1/2 cursor-pointer appearance-none rounded-full bg-white/80 backdrop-blur transition-colors hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-orange/60"
           />
         </div>
 

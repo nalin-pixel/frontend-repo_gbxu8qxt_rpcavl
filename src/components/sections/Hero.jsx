@@ -60,9 +60,25 @@ export default function Hero() {
 
   return (
     <header className="relative min-h-screen overflow-hidden bg-gradient-to-b from-gray-100 to-white">
-      {/* Ambient glows */}
-      <div className="pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-brand-orange/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-24 bottom-20 h-96 w-96 rounded-full bg-brand-orange/20 blur-3xl" />
+      {/* Background spotlights and soft shadows */}
+      <motion.div
+        className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-brand-orange/20 blur-3xl"
+        animate={prefersReducedMotion ? {} : { x: [0, 20, -10, 0], y: [0, -10, 15, 0], opacity: [0.7, 1, 0.8, 0.7] }}
+        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+        aria-hidden
+      />
+      <motion.div
+        className="pointer-events-none absolute -right-56 top-40 h-[680px] w-[680px] rounded-full bg-orange-200/30 blur-3xl"
+        animate={prefersReducedMotion ? {} : { x: [0, -15, 10, 0], y: [0, 18, -8, 0], opacity: [0.6, 0.85, 0.7, 0.6] }}
+        transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+        aria-hidden
+      />
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-1/3 h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-white/30 blur-3xl"
+        animate={prefersReducedMotion ? {} : { opacity: [0.2, 0.35, 0.25, 0.2] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        aria-hidden
+      />
 
       {/* Nav */}
       <div className="fixed inset-x-0 top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60">
@@ -141,8 +157,8 @@ export default function Hero() {
 
         {/* Right: Enlarged animated, interactive visual resembling a 3D dashboard */}
         <div className="relative hidden md:block">
-          {/* Glow ring */}
-          <div className="pointer-events-none absolute -inset-8 rounded-[28px] bg-gradient-to-b from-brand-orange/20 to-transparent blur-2xl" aria-hidden />
+          {/* Spotlight shadow under the card */}
+          <div className="pointer-events-none absolute left-1/2 top-[55%] h-64 w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/10 blur-2xl" aria-hidden />
 
           <motion.div
             ref={containerRef}
