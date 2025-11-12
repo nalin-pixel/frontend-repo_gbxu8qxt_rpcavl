@@ -12,7 +12,7 @@ const fadeUp = {
 export default function Transformation() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [position, setPosition] = useState(50)
+  const [position, setPosition] = useState(52)
 
   const onInput = (e) => setPosition(Number(e.target.value))
 
@@ -52,7 +52,7 @@ export default function Transformation() {
         <div className="relative w-full overflow-hidden rounded-lg" style={{ height: 440 }}>
           {/* AFTER on the right (base layer) */}
           <img
-            src="/images/mock-after.png"
+            src="/images/article-positive.svg"
             alt="After: optimized search results with positive coverage"
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
@@ -66,7 +66,7 @@ export default function Transformation() {
             aria-hidden
           >
             <img
-              src="/images/mock-before.png"
+              src="/images/article-negative.svg"
               alt="Before: search results with negatives and missing authority signals"
               className="h-full w-full object-cover"
               loading="lazy"
@@ -113,7 +113,7 @@ export default function Transformation() {
       {/* Knowledge panel mock placed with a real image */}
       <div className="mx-auto mt-12 max-w-3xl text-center">
         <div className="relative overflow-hidden rounded-xl border bg-white shadow-card">
-          <img src="/images/google-panel.png" alt="Google Knowledge Panel mockup" className="h-64 w-full object-cover" loading="lazy" onError={handleError} />
+          <img src="/images/knowledge-panel.svg" alt="Google Knowledge Panel mockup" className="h-64 w-full object-cover" loading="lazy" onError={handleError} />
         </div>
         <figure className="mt-6">
           <blockquote className="text-lg italic text-gray-800">

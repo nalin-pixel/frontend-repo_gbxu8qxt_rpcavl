@@ -18,24 +18,27 @@ export default function SocialProof() {
   return (
     <Container paddingY="small" className="bg-white">
       <div className="mx-auto max-w-[1280px] px-6 md:px-8">
-        <p className="text-center text-sm font-semibold tracking-wide text-gray-600">As featured in</p>
+        <p className="text-center text-base md:text-lg font-semibold tracking-wide text-gray-700">As featured in</p>
         <div className="relative mt-6">
-          {/* Gradient masks for nicer edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent" aria-hidden />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent" aria-hidden />
-
-          <div className="overflow-hidden">
-            <ul
-              className="flex items-center gap-10 pr-10 will-change-transform [animation:scroll-x_30s_linear_infinite] motion-reduce:animate-none"
-              aria-label="Featured press logos carousel"
-              role="list"
-            >
-              {items.map((logo, i) => (
-                <li key={`${logo.alt}-${i}`} className="shrink-0 opacity-80 transition-opacity hover:opacity-100">
-                  <img src={logo.src} alt={logo.alt} className="h-8 w-auto md:h-9" loading="lazy" decoding="async" onError={handleError} />
-                </li>
-              ))}
-            </ul>
+          {/* Hard card edges for logo strip */}
+          <div className="mx-auto rounded-xl border bg-white shadow-sm">
+            <div className="relative">
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent" aria-hidden />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent" aria-hidden />
+              <div className="overflow-hidden">
+                <ul
+                  className="flex items-center gap-16 pr-16 will-change-transform [animation:scroll-x_30s_linear_infinite] motion-reduce:animate-none"
+                  aria-label="Featured press logos carousel"
+                  role="list"
+                >
+                  {items.map((logo, i) => (
+                    <li key={`${logo.alt}-${i}`} className="shrink-0 opacity-90 transition-opacity hover:opacity-100">
+                      <img src={logo.src} alt={logo.alt} className="h-10 w-auto md:h-12" loading="lazy" decoding="async" onError={handleError} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

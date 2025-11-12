@@ -139,7 +139,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: Enlarged animated, interactive visual resembling a full webpage */}
+        {/* Right: Enlarged animated, interactive visual resembling a 3D dashboard */}
         <div className="relative hidden md:block">
           {/* Glow ring */}
           <div className="pointer-events-none absolute -inset-8 rounded-[28px] bg-gradient-to-b from-brand-orange/20 to-transparent blur-2xl" aria-hidden />
@@ -148,29 +148,29 @@ export default function Hero() {
             ref={containerRef}
             style={!prefersReducedMotion ? { perspective: 1200 } : undefined}
             className="relative h-[520px] rounded-2xl border bg-white/80 p-3 md:p-5 lg:h-[640px] shadow-2xl backdrop-blur"
-            aria-label="Interactive search results showcase"
+            aria-label="Interactive client reputation dashboard"
           >
-            {/* Base: full webpage mock image */}
+            {/* Base: 3D dashboard mock image with reputation scores */}
             <motion.div
               style={!prefersReducedMotion ? { rotateX, rotateY } : undefined}
               className="relative h-full w-full overflow-hidden rounded-xl border bg-white shadow-md"
             >
               <img
-                src="/images/webpage-mock.svg"
-                alt="Interactive mock of a full webpage layout"
+                src="/images/dashboard-3d.svg"
+                alt="3D client dashboard showing reputation scores and growth"
                 className="h-full w-full object-cover"
                 onError={handleError}
               />
             </motion.div>
 
-            {/* Larger floating cards */}
+            {/* Larger floating cards with real mock assets */}
             <motion.div
               className="absolute -right-6 -top-8 w-56 overflow-hidden rounded-xl border bg-white shadow-xl"
               style={!prefersReducedMotion ? { x: translateX, y: translateY } : undefined}
               animate={prefersReducedMotion ? {} : { y: [0, -12, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <img src="/images/google-panel.png" alt="Knowledge panel" className="h-40 w-full object-cover" onError={handleError} />
+              <img src="/images/knowledge-panel.svg" alt="Knowledge panel" className="h-40 w-full object-cover" onError={handleError} />
               <div className="p-3 text-sm font-semibold text-gray-800">Knowledge Panel</div>
             </motion.div>
 
@@ -179,7 +179,7 @@ export default function Hero() {
               animate={prefersReducedMotion ? {} : { y: [0, 14, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
             >
-              <img src="/images/mock-after.png" alt="Positive press" className="h-40 w-full object-cover" onError={handleError} />
+              <img src="/images/article-positive.svg" alt="Positive press feature" className="h-40 w-full object-cover" onError={handleError} />
               <div className="p-3 text-sm font-semibold text-gray-800">Press Feature</div>
             </motion.div>
 
@@ -188,7 +188,7 @@ export default function Hero() {
               animate={prefersReducedMotion ? {} : { y: [0, -10, 0] }}
               transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
             >
-              <img src="/images/mock-before.png" alt="Suppressed result" className="h-32 w-full object-cover opacity-90" onError={handleError} />
+              <img src="/images/article-negative.svg" alt="Suppressed negative result" className="h-32 w-full object-cover opacity-90" onError={handleError} />
               <div className="p-2 text-xs font-medium text-gray-700">Suppressed</div>
             </motion.div>
 

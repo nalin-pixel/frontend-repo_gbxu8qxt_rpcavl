@@ -1,0 +1,32 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="24" fill="url(#bg)"/>
+  <!-- Masthead -->
+  <rect x="0" y="0" width="1200" height="88" fill="#111827"/>
+  <rect x="24" y="24" width="200" height="40" rx="8" fill="#FF6B35"/>
+  <rect x="244" y="28" width="300" height="32" rx="8" fill="#1F2937"/>
+  
+  <!-- Article hero -->
+  <rect x="80" y="128" width="1040" height="360" rx="16" fill="#CBD5E1"/>
+  <rect x="100" y="148" width="360" height="320" rx="14" fill="#0EA5E9" opacity="0.2"/>
+  <rect x="480" y="148" width="620" height="40" rx="8" fill="#0A0A0A"/>
+  <rect x="480" y="200" width="520" height="18" rx="6" fill="#374151"/>
+  <rect x="480" y="228" width="560" height="18" rx="6" fill="#4B5563"/>
+  <rect x="480" y="256" width="480" height="18" rx="6" fill="#6B7280"/>
+
+  <!-- Body -->
+  <rect x="100" y="520" width="1000" height="16" rx="6" fill="#4B5563"/>
+  <rect x="100" y="548" width="980" height="16" rx="6" fill="#6B7280"/>
+  <rect x="100" y="576" width="960" height="16" rx="6" fill="#9CA3AF"/>
+  <rect x="100" y="604" width="980" height="16" rx="6" fill="#6B7280"/>
+  <rect x="100" y="632" width="960" height="16" rx="6" fill="#9CA3AF"/>
+
+  <!-- Positive badge -->
+  <rect x="960" y="148" width="160" height="36" rx="18" fill="#10B981"/>
+  <text x="1040" y="172" text-anchor="middle" font-family="Inter, Arial" font-size="14" font-weight="700" fill="#FFFFFF">Feature</text>
+</svg>

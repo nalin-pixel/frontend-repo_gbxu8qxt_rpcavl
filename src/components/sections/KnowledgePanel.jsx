@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '../ui/Container'
 
 export default function KnowledgePanel() {
+  const handleError = (e) => { e.currentTarget.src = '/images/placeholder.svg' }
   return (
     <Container paddingY="large" className="bg-white">
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 items-center gap-10 md:grid-cols-2">
@@ -24,7 +25,7 @@ export default function KnowledgePanel() {
         </div>
         <div className="relative">
           <div className="relative overflow-hidden rounded-xl border bg-white shadow-xl">
-            <img src="/images/google-panel.png" alt="Google Knowledge Panel mockup" className="w-full object-cover" loading="lazy" />
+            <img src="/images/knowledge-panel.svg" alt="Google Knowledge Panel mockup" className="w-full object-cover" loading="lazy" onError={handleError} />
           </div>
           <p className="mt-3 text-center text-sm text-gray-500">Representative mock panel for demonstration purposes</p>
         </div>

@@ -1,0 +1,100 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FF6B35"/>
+      <stop offset="1" stop-color="#FFA77F"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0A0A0A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Scene background -->
+  <rect width="1200" height="800" rx="32" fill="#FFFFFF"/>
+  <rect width="1200" height="800" rx="32" fill="url(#card)"/>
+
+  <!-- 3D perspective base -->
+  <g transform="perspective(1200) rotateX(8) rotateY(-8) translate(40,40)">
+    <!-- Top bar -->
+    <g filter="url(#shadow)">
+      <rect x="0" y="0" width="1040" height="72" rx="16" fill="#0F172A"/>
+      <circle cx="36" cy="36" r="6" fill="#FF5F57"/>
+      <circle cx="56" cy="36" r="6" fill="#FEBC2E"/>
+      <circle cx="76" cy="36" r="6" fill="#28C840"/>
+      <rect x="120" y="22" width="280" height="28" rx="8" fill="#1F2937"/>
+      <rect x="420" y="22" width="160" height="28" rx="8" fill="#1F2937"/>
+    </g>
+
+    <!-- Main grid -->
+    <g transform="translate(0,96)">
+      <!-- Left column: score card -->
+      <g filter="url(#shadow)">
+        <rect x="0" y="0" width="500" height="280" rx="20" fill="white"/>
+        <rect x="0" y="0" width="500" height="280" rx="20" fill="url(#card)"/>
+        <text x="28" y="44" font-family="Inter, Arial" font-size="18" font-weight="700" fill="#0A0A0A">Reputation Score</text>
+        <text x="28" y="78" font-family="Inter, Arial" font-size="14" fill="#475569">Client: Acme Capital</text>
+        <!-- Gauge -->
+        <circle cx="140" cy="170" r="84" fill="#F1F5F9"/>
+        <path d="M56 170a84 84 0 1 1 168 0" stroke="url(#accent)" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <text x="108" y="178" font-family="Inter, Arial" font-size="36" font-weight="800" fill="#0A0A0A">92</text>
+        <text x="104" y="206" font-family="Inter, Arial" font-size="12" fill="#0A0A0A">Excellent</text>
+        <!-- KPIs -->
+        <rect x="260" y="120" width="210" height="44" rx="10" fill="#0EA5E9" opacity="0.08"/>
+        <text x="272" y="147" font-family="Inter, Arial" font-size="14" font-weight="700" fill="#0369A1">SERP Control 86%</text>
+        <rect x="260" y="176" width="210" height="44" rx="10" fill="#10B981" opacity="0.08"/>
+        <text x="272" y="203" font-family="Inter, Arial" font-size="14" font-weight="700" fill="#065F46">Mentions +312</text>
+      </g>
+
+      <!-- Right column: chart -->
+      <g transform="translate(540,0)" filter="url(#shadow)">
+        <rect x="0" y="0" width="500" height="280" rx="20" fill="white"/>
+        <rect x="0" y="0" width="500" height="280" rx="20" fill="url(#card)"/>
+        <text x="28" y="44" font-family="Inter, Arial" font-size="18" font-weight="700" fill="#0A0A0A">Visibility Growth</text>
+        <!-- Grid -->
+        <g stroke="#E2E8F0" stroke-width="1">
+          <path d="M28 80 H472"/><path d="M28 120 H472"/><path d="M28 160 H472"/><path d="M28 200 H472"/><path d="M28 240 H472"/>
+        </g>
+        <!-- Line -->
+        <polyline fill="none" stroke="url(#accent)" stroke-width="4" points="28,220 88,210 148,200 208,190 268,170 328,160 388,140 448,110"/>
+        <!-- Dots -->
+        <g fill="#FF6B35">
+          <circle cx="88" cy="210" r="4"/><circle cx="148" cy="200" r="4"/><circle cx="208" cy="190" r="4"/><circle cx="268" cy="170" r="4"/><circle cx="328" cy="160" r="4"/><circle cx="388" cy="140" r="4"/><circle cx="448" cy="110" r="4"/>
+        </g>
+      </g>
+
+      <!-- Bottom: table -->
+      <g transform="translate(0,320)" filter="url(#shadow)">
+        <rect x="0" y="0" width="1040" height="300" rx="20" fill="white"/>
+        <rect x="0" y="0" width="1040" height="300" rx="20" fill="url(#card)"/>
+        <!-- Header -->
+        <rect x="0" y="0" width="1040" height="56" rx="20" fill="#0A0A0A" opacity="0.04"/>
+        <text x="28" y="36" font-family="Inter, Arial" font-size="14" font-weight="700" fill="#0A0A0A">Recent Events</text>
+        <!-- Rows -->
+        <g font-family="Inter, Arial" font-size="13" fill="#0A0A0A">
+          <text x="28" y="96">Yahoo Finance feature live</text>
+          <text x="28" y="132">Negative article suppressed</text>
+          <text x="28" y="168">Knowledge Panel verified</text>
+          <text x="28" y="204">Wikipedia advisory published</text>
+          <text x="28" y="240">Press graph expanded</text>
+        </g>
+        <!-- Status chips -->
+        <g>
+          <rect x="880" y="78" width="120" height="28" rx="14" fill="#10B981" opacity="0.15"/>
+          <text x="910" y="96" font-family="Inter, Arial" font-size="12" font-weight="700" fill="#065F46">Success</text>
+          <rect x="880" y="114" width="120" height="28" rx="14" fill="#F59E0B" opacity="0.15"/>
+          <text x="904" y="132" font-family="Inter, Arial" font-size="12" font-weight="700" fill="#92400E">In Progress</text>
+          <rect x="880" y="150" width="120" height="28" rx="14" fill="#3B82F6" opacity="0.15"/>
+          <text x="902" y="168" font-family="Inter, Arial" font-size="12" font-weight="700" fill="#1E3A8A">Verified</text>
+          <rect x="880" y="186" width="120" height="28" rx="14" fill="#10B981" opacity="0.15"/>
+          <text x="910" y="204" font-family="Inter, Arial" font-size="12" font-weight="700" fill="#065F46">Success</text>
+          <rect x="880" y="222" width="120" height="28" rx="14" fill="#3B82F6" opacity="0.15"/>
+          <text x="904" y="240" font-family="Inter, Arial" font-size="12" font-weight="700" fill="#1E3A8A">Updated</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
